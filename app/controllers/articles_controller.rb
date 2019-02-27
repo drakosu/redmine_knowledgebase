@@ -15,7 +15,6 @@ class ArticlesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :force_404
 
   ActiveRecord::ConnectionAdapters::Column.send(:alias_method, :type_cast, :type_cast_for_database)
-
   def index
     summary_limit = redmine_knowledgebase_settings_value(:summary_limit).to_i
 
@@ -246,9 +245,9 @@ class ArticlesController < ApplicationController
     @article.clear_newer_versions
     redirect_to :action => 'show', :id => @article, :project_id => @project
   end
-#######
+
 private
-#######
+
 
   # Abstract attachment method to resolve how files should be attached to a model.
   # In newer versions of Redmine, the attach_files functionality was moved

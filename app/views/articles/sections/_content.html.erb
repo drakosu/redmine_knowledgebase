@@ -10,5 +10,6 @@
 </div>
 
 <div id="article">
-  <div class="wiki"><%= textilizable @article, :content, :attachments => @article.attachments %></div>
+  <div class="wiki"><%= textilizable @article, :content, attachments: @article.attachments,
+                                     edit_section_links: { controller: 'articles', action: 'edit', id: @article.id} %></div>
 </div>
