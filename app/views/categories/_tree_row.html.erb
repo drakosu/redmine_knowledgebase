@@ -1,8 +1,8 @@
 <tr class="project child leaf <%= category.level > 0 ? "idnt idnt-#{category.level}" : nil %>">
   <td class="name">
     <span>
-      <%= link_to(category.title, {:controller => 'categories', :action => 'show', :id => category.id, :project_id => @project} ) %>
-      <%= " (#{category.articles.count})" if (category.articles.count > 0 && show_category_totals?) %>
+      <%= link_to(category.title, controller: 'categories', action: 'show', id: category.id, project_id: @project) %>
+      <%= " (#{category.articles.count})" if show_category_totals? && category.articles.count > 0 %>
     </span>
   </td>
 </tr>
