@@ -12,7 +12,7 @@ class KbArticle < ActiveRecord::Base
   validates_presence_of :category_id
 
   belongs_to :project
-  belongs_to :category, class_name: 'KbCategory', counter_cache: true
+  belongs_to :category, class_name: 'KbCategory'
   belongs_to :author,   class_name: 'User', foreign_key: 'author_id'
   belongs_to :updater,  class_name: 'User', foreign_key: 'updater_id'
 
