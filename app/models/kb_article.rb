@@ -70,7 +70,7 @@ class KbArticle < ActiveRecord::Base
   scope :popular, ->(limit:) do
     preload(:viewings)
         .preload(:category)
-        .left_joins(:viewings)
+        .joins('LEFT OUTER JOIN "viewings" ON "viewings"."viewed_id" = "kb_articles"."id"')
         .group(:id)
         .select("#{table_name}.*, COUNT(#{Viewing.table_name}.id) AS views")
         .order('views DESC')
@@ -80,7 +80,7 @@ class KbArticle < ActiveRecord::Base
   scope :top_rated, ->(limit:) do
     preload(:ratings)
         .preload(:category)
-        .left_joins(:ratings)
+        .joins('LEFT OUTER JOIN "ratings" ON "ratings"."rated_id" = "kb_articles"."id"')
         .group(:id)
         .with_rating
         .order('rating_avg DESC, rating_count DESC')
@@ -89,13 +89,11 @@ class KbArticle < ActiveRecord::Base
   end
 
   scope :with_rating, -> do
-    left_joins(:ratings)
+    joins('LEFT OUTER JOIN "ratings" ON "ratings"."rated_id" = "kb_articles"."id"')
         .group(:id)
-        .select(<<~SQL.squish)
-          #{table_name}.*,
+        .select("#{table_name}.*,
           AVG(COALESCE(#{Rating.table_name}.rating, 0)) AS rating_avg,
-          COUNT(#{Rating.table_name}.id) AS rating_count
-        SQL
+          COUNT(#{Rating.table_name}.id) AS rating_count")
   end
 
   def recipients
