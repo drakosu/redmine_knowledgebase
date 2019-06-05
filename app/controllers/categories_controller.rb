@@ -136,7 +136,7 @@ private
     @article_count = @articles.count
     @article_pages = Redmine::Pagination::Paginator.new @article_count, @limit, params['page']
     @offset ||= @article_pages.offset
-    @articles = @articles.preload(:author).with_rating.offset(@offset).limit(@limit)
+    @articles = @articles.preload(:author).offset(@offset).limit(@limit)
 
     @categories = @project.categories.where(:parent_id => nil).preload(children: { children: { children: :children } })
   end

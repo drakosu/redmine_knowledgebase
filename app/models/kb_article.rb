@@ -91,9 +91,11 @@ class KbArticle < ActiveRecord::Base
   scope :with_rating, -> do
     joins('LEFT OUTER JOIN "ratings" ON "ratings"."rated_id" = "kb_articles"."id"')
         .group(:id)
-        .select("#{table_name}.*,
+        .select(<<-SQL.squish)
+          #{table_name}.*,
           AVG(COALESCE(#{Rating.table_name}.rating, 0)) AS rating_avg,
-          COUNT(#{Rating.table_name}.id) AS rating_count")
+          COUNT(#{Rating.table_name}.id) AS rating_count
+        SQL
   end
 
   def recipients
