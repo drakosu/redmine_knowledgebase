@@ -1,8 +1,11 @@
 class AddTaggingsCounterCacheToTags < ActiveRecord::Migration
   def self.up
+
+    create_table :kb_20150326093122_dummy  # dummy table for recording migration actions.
+
     unless column_exists?(:tags, :taggings_count)
       add_column :tags, :taggings_count, :integer, default: 0
-      @column_count_on_tags_added_by_kb = true
+      add_column :kb_20150326093122_dummy, :index_count_added_by_kb, :integer
     end
     ActsAsTaggableOn::Tag.reset_column_information
     ActsAsTaggableOn::Tag.find_each do |tag|
@@ -11,11 +14,12 @@ class AddTaggingsCounterCacheToTags < ActiveRecord::Migration
   end
 
   def self.down
-    @column_count_on_tags_added_by_kb ||= false
     
-    if @column_count_on_tags_added_by_kb and column_exists?(:tags, :taggings_count)
+    if column_exists?(:kb_20150326093122_dummy, :index_count_added_by_kb) and column_exists?(:tags, :taggings_count)
       remove_column :tags, :taggings_count
-      @column_count_on_tags_added_by_kb = false
     end
+
+    drop_table :kb_20150326093122_dummy
+
   end
 end
