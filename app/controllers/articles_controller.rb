@@ -164,7 +164,7 @@ class ArticlesController < ApplicationController
       @article.content = Redmine::WikiFormatting.formatter.new(@article.content)
                              .update_section(@section, @text, @section_hash)
     else
-      @text = params.dig(:article, :content)
+      @text = params[:article][:content]
     end
 
     @article.assign_attributes(params[:article])
