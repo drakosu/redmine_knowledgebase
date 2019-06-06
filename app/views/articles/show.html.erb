@@ -58,10 +58,6 @@
 	<%= link_to @article.category.title, { :controller => 'categories', :action => 'show', :id => @article.category.id, :project_id => @project} %>
 </p>
 
-<% other_formats_links do |f| %>
-  <%= f.link_to 'PDF', :url => params %>
-<% end %>
-
 <div class="wiki"><h1><%= @article.title %></h1></div>
 
 <% unless redmine_knowledgebase_settings_value(:disable_article_summaries) %>
@@ -107,6 +103,10 @@
     <%= render :partial => "articles/sections/history" %>
   <% end %>
 
+<% end %>
+
+<% other_formats_links do |f| %>
+  <%= f.link_to 'PDF', :url => params %>
 <% end %>
 
 <% end %>
