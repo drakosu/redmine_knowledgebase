@@ -27,10 +27,10 @@
 
   <li><%= link_to_if_authorized l(:label_new_comment), { :controller => "articles", :action => "comment", :article_id => @article.id, :project_id => @project}, :class => "icon icon-comment", :remote => true, :method => :get %></li>
   <li> <%= watcher_link(@article, User.current) %></li>
-  <li>
-      <%= render :partial => 'articles/watchers', :locals => {:watched => @article} %>
-  </li>
 </ul>
+<div id="watchers">
+    <%= render :partial => 'articles/watchers', :locals => {:watched => @article} %>
+</div>
 	<br />
   <div id='rating-container'>
     <%= render :partial => "rating" %>
