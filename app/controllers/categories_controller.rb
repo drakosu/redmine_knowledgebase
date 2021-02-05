@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
 
   def index
 
-    @articles = @project.articles.order("#{sort_column} #{sort_direction}")
+    @articles = @project.articles.order("kb_articles.#{sort_column} #{sort_direction}")
 
     prepare
 
