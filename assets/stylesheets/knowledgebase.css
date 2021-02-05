@@ -127,8 +127,8 @@ div.star-rating{background:transparent!important;overflow:hidden!important}
 /* END jQuery.Rating Plugin CSS */
 
 /* Add icons to activity page */
-dt.article-add { background-image: url(../images/page_add.png); }
-dt.article-edit { background-image: url(../images/page_edit.png); }
+dt.icon-article-add { background-image: url(../images/page_add.png); }
+dt.icon-article-edit { background-image: url(../images/page_edit.png); }
 
 div.articles h3 { background: url(../images/page.png) no-repeat 0% 50%; padding-left: 20px; }
 div.articles h2 { padding-top: 18px; }
@@ -236,6 +236,55 @@ span.tile-author {
 
 div.attachments {
     overflow: hidden;
+}
+
+#article-tree.tj_container .tj_icon {
+	height: 13px;
+}
+
+.icon-folder-expand:before, .icon-folder-collapse:before, .icon-article:before {
+	content: "";
+	display: block;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.icon-folder-expand:before, .icon-folder-collapse:before {	
+    width: 20px;
+    height: 20px;
+}
+
+.icon-article:before {
+    width: 18px;
+    height: 18px;
+}
+
+.icon-folder-expand:before {
+	background-image: url("../images/article_tree_folder_expanded.png");	
+}
+
+.icon-folder-collapse:before {
+	background-image: url("../images/article_tree_folder_folded.png");
+}
+
+.icon-article:before {
+	background-image: url("../images/article_tree_document.png");
+}
+
+.tj_container span.tj_description.selected a {
+	color: #fff;
+}
+
+#article-tree.tj_container li span.tj_icon {
+	margin-right: 4px;
+}
+
+#article-tree.tj_container li .tj_description span.tj_icon {
+	height: 15px;
+}
+
+#article-tree.tj_container li .tj_description.tj_leaf span.tj_icon {
+	height: 14px;
 }
 
 
