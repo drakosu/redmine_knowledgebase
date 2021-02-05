@@ -90,6 +90,8 @@ en:
   permission_view_top_rated_articles: "View top rated articles"
   permission_watch_articles: "Watch articles"
   permission_watch_categories: "Watch categories"
+  permission_delete_kb_article_watchers: "Delete article watchers"
+  permission_delete_kb_category_watchers: "Delete category watchers"
   project_module_knowledgebase: Knowledgebase
   show_article_without_tabs: "Show articles without tabs?"
   show_attachments_first: "Show attachments before article content?"

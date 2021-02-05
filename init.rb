@@ -72,8 +72,14 @@ Redmine::Plugin.register :redmine_knowledgebase do
     permission :watch_articles, {
       :watchers		=> [:new, :destroy]
     }
+    permission :delete_kb_article_watchers, {
+      :watchers		=> :destroy
+    }
     permission :watch_categories, {
       :watchers => [:new, :destroy]
+    }
+    permission :delete_kb_category_watchers, {
+      :watchers		=> :destroy
     }
     permission :view_recent_articles, {
       :articles => :index

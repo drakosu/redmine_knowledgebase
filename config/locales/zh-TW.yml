@@ -88,6 +88,8 @@ zh-TW:
   permission_view_top_rated_articles: 檢視評分最高的文章
   permission_watch_articles: 關注文章
   permission_watch_categories: 關注類別
+  permission_delete_kb_article_watchers: "刪除文章關注"
+  permission_delete_kb_category_watchers: "刪除類別關注"
   project_module_knowledgebase: 知識庫
   show_article_without_tabs: "文章內容不以頁籤方式顯示？"
   show_attachments_first: "在文章內容前先顯示附件？"
